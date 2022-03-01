@@ -1,0 +1,27 @@
+{
+  "name": "e-commsite",
+  "version": "1.0.0",
+  "description": "## User Story - AS A manager at an internet retail company - I WANT a back end for my e-commerce website that uses the latest technologies - SO THAT my company can compete with other e-commerce companies",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ragil1114/E-commSite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ragil1114/E-commSite/issues"
+  },
+  "homepage": "https://github.com/ragil1114/E-commSite#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  }
+}
