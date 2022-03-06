@@ -15,23 +15,18 @@ class Product extends Model {
       },
       product_name: {
         type: DataTypes.STRING,
-        allowNull: false
       },
       product_price: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false
       },
       product_stock: {
         type: DataTypes.INTEGER,
-        allowNull: false
       },
       product_image: {
         type: DataTypes.STRING,
-        allowNull: false
       },
       category_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
       },
       created_at: {
         type: DataTypes.DATE,
@@ -211,23 +206,18 @@ Product.init(
     },
     product_name: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     product_price: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
     },
     product_stock: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     product_image: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     created_at: {
       type: DataTypes.DATE,
