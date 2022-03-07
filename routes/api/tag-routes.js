@@ -40,15 +40,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
-  Tag.create({
-    tag_name: req.body.tag_name
-  })
+  Tag.create(req.body)
     .then((tag) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      if (req.body.productIds) {
-        tag.setProducts(req.body.productIds);
-      }
-      res.json(tag);
+      res.status(200).json(tag);
     })
     .catch(err => {
       console.log(err);
@@ -58,9 +53,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update({
-    tag_name: req.body.tag_name
-  }, {
+  Tag.update(req.body, {
     where: {
       id: req.params.id
     }
@@ -87,8 +80,7 @@ router.delete('/:id', (req, res) => {
   })
     .then((dbTagData) => {
       if (!dbTagData) {
-        res.status(404).json({ message: 'No tag found with this id' });
-        return;
+        return res.status(404).json({ message: 'No tag found with this id' });
       }
       res.json(dbTagData);
     })
