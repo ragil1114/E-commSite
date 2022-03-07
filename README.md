@@ -23,6 +23,7 @@
 https://github.com/ragil1114/E-commSite.git
 - Screencastify:
 https://app.screencastify.com/videos
+Click E-Comm Site to watch the video.
 
 ### Screenshot
 ![demo](https://github.com/ragil1114/E-commSite/blob/main/assets/images/demo.png)
