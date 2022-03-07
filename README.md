@@ -22,7 +22,8 @@
 - GitHub:
 https://github.com/ragil1114/E-commSite.git
 - Screencastify:
-
+chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/1e07b65a-f5e0-4765-y9db-9b85f710d740
+https://app.screencastify.com/videos
 
 ### Screenshot
 ![demo](https://github.com/ragil1114/E-commSite/blob/main/assets/images/demo.png)
