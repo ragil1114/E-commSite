@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({
-    include: [{ model: Product }]
+    include: [ Product ]
   })
     .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    include: [{ model: Product }]
+    include: [ Product ]
   })
     .then(dbCategoryData => {
       if (!dbCategoryData) {
@@ -41,9 +41,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new category
-  Category.create({
-    name: req.body.name
-  })
+  Category.create(req.body)
     .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
       console.log(err);
@@ -53,9 +51,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update({
-      name: req.body.name
-    },
+  Category.update(req.body,
     {
       where: {
         id: req.params.id
@@ -84,6 +80,10 @@ router.delete('/:id', (req, res) => {
       }
       res.json(dbCategoryData);
     })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
