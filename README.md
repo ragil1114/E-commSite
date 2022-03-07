@@ -24,5 +24,5 @@ https://github.com/ragil1114/E-commSite.git
 - Screencastify:
 
 
-### Screenshots
+### Screenshot
 ![demo](https://github.com/ragil1114/E-commSite/blob/main/assets/images/demo.png)
