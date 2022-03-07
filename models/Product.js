@@ -4,196 +4,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Initialize Product model (table) by extending off Sequelize's Model class
-class Product extends Model {
-    // define our model's structure
-  static structure() {
-    return {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      product_name: {
-        type: DataTypes.STRING,
-      },
-      product_price: {
-        type: DataTypes.DECIMAL(10, 2),
-      },
-      product_stock: {
-        type: DataTypes.INTEGER,
-      },
-      product_image: {
-        type: DataTypes.STRING,
-      },
-      category_id: {
-        type: DataTypes.INTEGER,
-      },
-      created_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-      },
-      updated_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-      }
-    };
-  }
-  
-  // define our model's options
-  static options() {
-    return {
-      timestamps: false,
-      freezeTableName: true,
-      underscored: true,
-      modelName: 'product',
-      // define our associations
-      associations: [ 
-        'ProductTag',
-        'ProductCategory'
-      ]
-    };
-  }
-
-  // add a method to the Product class
-  static async getAllProducts() {
-    // return all products
-    return await Product.findAll({
-      attributes: [
-        'id',
-        'product_name',
-        'price',
-        'stock',
-        'category_id',
-        'created_at',
-        'updated_at'
-      ],
-      include: [
-        {
-          model: Category,
-          attributes: ['category_name']
-        }
-      ]
-    });
-  }
-  
-  static async getProductById(id) {
-    // return a product by id
-    return await Product.findOne({
-      attributes: [
-        'id',
-        'product_name',
-        'price',
-        'stock',
-        'category_id',
-        'created_at',
-        'updated_at'
-      ],
-      where: { id },
-      include: [
-        {
-          model: Category,
-          attributes: ['category_name']
-        }
-      ]
-    });
-  }
-
-  static async getProductByCategory(category_id) {
-    // return a product by category
-    return await Product.findAll({
-      attributes: [
-        'id',
-        'product_name',
-        'price',
-        'stock',
-        'category_id',
-        'created_at',
-        'updated_at'
-      ],
-      where: { category_id },
-      include: [
-        {
-          model: Category,
-          attributes: ['category_name']
-        }
-      ]
-    });
-  }
-
-  static async createProduct(newProduct) {
-    // create a new product and return the new product
-    return await Product.create(newProduct);
-  }
-
-  static async updateProduct(id, updatedProduct) {
-    // update a product by id and return the updated product
-    return await Product.update(updatedProduct, {
-      where: { id }
-    });
-  }
-
-  static async deleteProduct(id) {
-    // delete a product by id
-    return await Product.destroy({
-      where: { id }
-    });
-  }
-
-  static async getProductTags(id) {
-    // return all tags for a product
-    return await Product.findOne({
-      attributes: [],
-      where: { id },
-      include: [
-        {
-          model: Tag,
-          attributes: ['tag_name'],
-          through: {
-            attributes: []
-          }
-        }
-      ]
-    });
-  }
-
-  static async addProductTag(id, tag_id) {
-    // add a tag to a product
-    return await Product.findOne({
-      attributes: [],
-      where: { id },
-      include: [
-        {
-          model: Tag,
-          attributes: [],
-          through: {
-            attributes: []
-          }
-        }
-      ]
-    }).then(product => {
-      product.addTag(tag_id);
-    });
-  }
-
-  static async removeProductTag(id, tag_id) {
-    // remove a tag from a product
-    return await Product.findOne({
-      attributes: [],
-      where: { id },
-      include: [
-        {
-          model: Tag,
-          attributes: [],
-          through: {
-            attributes: []
-          }
-        }
-      ]
-    }).then(product => {
-      product.removeTag(tag_id);
-    });
-  }
-}
+class Product extends Model {}
 
 // set up fields and rules for Product model
 Product.init(
@@ -202,31 +13,36 @@ Product.init(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      allowNull: false,
       autoIncrement: true
     },
     product_name: {
       type: DataTypes.STRING,
+      allowNull: false
     },
-    product_price: {
+    price: {
       type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      validate: {
+        isDecimal: true
+      }
     },
-    product_stock: {
+    stock: {
       type: DataTypes.INTEGER,
-    },
-    product_image: {
-      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true
+      }
     },
     category_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'category',
+        key: 'id'
+      }
     },
-    created_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
   },
   {
     sequelize,
