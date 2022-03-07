@@ -22,8 +22,8 @@
 - GitHub:
 https://github.com/ragil1114/E-commSite.git
 - Screencastify:
-https://app.screencastify.com/videos
-(Click E-Comm Site to watch the video)
+https://drive.google.com/file/d/1Z13KAvzlKiKPpQNd2G8Uog1-bg_J_Yua/view
+chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/1e07b65a-f5e0-4765-y9db-9b85f710d740
 
 ### Screenshot
 ![demo](https://github.com/ragil1114/E-commSite/blob/main/assets/images/demo.png)
