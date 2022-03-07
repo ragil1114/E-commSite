@@ -1,4 +1,4 @@
-# E-commSite
+# E-comm Site
 
 ## User Story
 - AS A manager at an internet retail company
@@ -19,10 +19,9 @@
 - THEN I am able to successfully create, update, and delete data in my database
 
 ## Links
-GitHub:
+- GitHub:
 https://github.com/ragil1114/E-commSite.git
-
-Screencastify:
+- Screencastify:
 
 
 ### Screenshots
